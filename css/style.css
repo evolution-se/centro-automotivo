@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    TORQUE FORTE CENTRO AUTOMOTIVO — style.css
    Blocos:
    01 Variaveis | 02 Base | 03 Tipografia | 04 Secoes
@@ -82,7 +82,7 @@ h1, h2, h3, h4 {
 .section-eyebrow {
   font-family: var(--tf-font-title);
   font-weight: 600;
-  font-size: .85rem;
+  font-size: .92rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--tf-accent);
@@ -269,7 +269,7 @@ h1, h2, h3, h4 {
 .topbar {
   background: var(--tf-black);
   color: var(--tf-muted-light);
-  font-size: .85rem;
+  font-size: .9rem;
   padding: .35rem 0;
 }
 
@@ -283,6 +283,8 @@ h1, h2, h3, h4 {
 .site-header {
   min-height: var(--tf-header-h);
   transition: background .3s, box-shadow .3s, border .3s;
+  /* Impede que a marca/alinhados do header estiquem a tela (barra branca) */
+  overflow-x: hidden;
 }
 
 .site-header .navbar {
@@ -308,6 +310,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: .7rem;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand-mark {
@@ -333,7 +336,7 @@ h1, h2, h3, h4 {
 
 .brand-sub {
   font-family: var(--tf-font-title);
-  font-size: .6rem;
+  font-size: .7rem;
   letter-spacing: .3em;
   color: var(--tf-muted-light);
 }
@@ -342,7 +345,7 @@ h1, h2, h3, h4 {
   color: var(--tf-text-light);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: .92rem;
+  font-size: .95rem;
   letter-spacing: .04em;
   padding: .8rem .9rem;
   position: relative;
@@ -364,21 +367,59 @@ h1, h2, h3, h4 {
   background: var(--tf-accent);
 }
 
-.navbar-toggler { border: 1px solid var(--tf-border-dark); }
-.navbar-toggler .navbar-toggler-icon { filter: invert(1); }
+.navbar-toggler {
+  border: 1px solid var(--tf-muted-light);
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
 
-@media (max-width: 991.98px) {
+.navbar-toggler:focus-visible {
+  outline: 3px solid var(--tf-accent);
+  outline-offset: 2px;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  filter: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23F4F5F6' stroke-width='2.5' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+@media (max-width: 1199.98px) {
   .site-header { background: var(--tf-graphite); }
+
+  .navbar { flex-wrap: wrap; }
 
   .navbar-collapse {
     background: var(--tf-graphite);
     padding: 1rem;
     border-top: 1px solid var(--tf-border-dark);
+    max-height: calc(100svh - var(--tf-header-h));
+    overflow-y: auto;
   }
 
   .navbar-nav .nav-link {
     font-size: 1.25rem;
     font-family: var(--tf-font-title);
+    min-height: 48px;
+  }
+
+  .brand-name { font-size: clamp(0.95rem, 2.4vw, 1.1rem); }
+  .brand-sub {
+    font-size: clamp(0.55rem, 1.4vw, 0.62rem);
+    letter-spacing: .16em;
+  }
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
   }
 }
 
@@ -419,7 +460,7 @@ h1, h2, h3, h4 {
   font-family: var(--tf-font-title);
   font-weight: 600;
   letter-spacing: .14em;
-  font-size: .9rem;
+  font-size: .95rem;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -447,7 +488,7 @@ h1, h2, h3, h4 {
   gap: 1rem 1.6rem;
   margin-top: 2rem;
   font-weight: 600;
-  font-size: .95rem;
+  font-size: 1rem;
 }
 
 .hero-trust i {
@@ -560,13 +601,13 @@ h1, h2, h3, h4 {
 
 .card-service p {
   color: var(--tf-muted);
-  font-size: .98rem;
+  font-size: 1.02rem;
   flex: 1;
 }
 
 /* Selo discreto p/ conteudo ficticio/ilustrativo */
 .badge-demo {
-  font-size: .72rem;
+  font-size: .82rem;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -658,7 +699,7 @@ h1, h2, h3, h4 {
 
 .diff-card p {
   color: var(--tf-muted-light);
-  font-size: .96rem;
+  font-size: 1.02rem;
   margin: 0;
 }
 
@@ -768,7 +809,7 @@ h1, h2, h3, h4 {
   padding: .7rem .9rem;
   background: linear-gradient(transparent, rgba(15, 17, 19, .9));
   color: #fff;
-  font-size: .85rem;
+  font-size: .9rem;
   font-weight: 600;
 }
 
@@ -892,25 +933,28 @@ h1, h2, h3, h4 {
 
 .footer-bottom {
   border-top: 1px solid var(--tf-border-dark);
-  font-size: .85rem;
+  font-size: .9rem;
 }
 
 /* ---------- 20. Flutuantes ---------- */
 .wa-float {
   position: fixed;
   right: calc(20px + env(safe-area-inset-right));
-  bottom: calc(20px + env(safe-area-inset-bottom));
-  width: 60px;
-  height: 60px;
+  bottom: calc(20px + max(0px, env(safe-area-inset-bottom)));
+  width: clamp(52px, 15vw, 64px);
+  height: clamp(52px, 15vw, 64px);
   border-radius: 50%;
   background: var(--tf-wa);
   color: #fff;
   display: grid;
   place-items: center;
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
   z-index: 1050;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
   animation: waPulse 4s infinite;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
 }
 
 @keyframes waPulse {
@@ -922,20 +966,23 @@ h1, h2, h3, h4 {
 .back-top {
   position: fixed;
   right: calc(26px + env(safe-area-inset-right));
-  bottom: calc(96px + env(safe-area-inset-bottom));
-  width: 48px;
-  height: 48px;
+  bottom: calc(20px + max(0px, env(safe-area-inset-bottom)) + clamp(52px, 15vw, 64px) + 14px);
+  width: clamp(40px, 11vw, 52px);
+  height: clamp(40px, 11vw, 52px);
   border-radius: 6px;
   background: var(--tf-graphite);
   color: var(--tf-accent);
   border: 1px solid var(--tf-border-dark);
   display: grid;
   place-items: center;
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
   z-index: 1049;
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
 }
 
 .back-top.show {
@@ -969,8 +1016,154 @@ h1, h2, h3, h4 {
     justify-content: center;
   }
 
-  .hero { padding-top: 7rem; }
+  .hero {
+    padding-top: 7rem;
+    min-height: 92vh;
+    min-height: 92svh; /* altura real sem a barra do navegador */
+  }
+
+  /* Overlay vertical no retrato: texto sempre sobre �rea escura */
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(15, 17, 19, .9) 0%, rgba(15, 17, 19, .78) 55%, rgba(15, 17, 19, .6) 100%);
+  }
+
+  .hero-sub { font-size: 1.05rem; }
+
+  /* Cart�o de hor�rio ocupa a largura sem estourar */
+  .hero-card {
+    display: flex;
+    width: 100%;
+  }
+
+  /* Moldura/imagem da Oficina dentro do fluxo (sem negativos) */
   .about-frame { margin-bottom: 2.5rem; }
+  .about-frame::before { transform: none; }
+  .about-frame .detail-img {
+    right: 12px;
+    bottom: -18px;
+  }
+
+  /* T�tulos e cards quebram palavras longas em 360px */
+  h1, h2, h3,
+  .card-service,
+  .step-card,
+  .diff-card,
+  .vehicle-card,
+  .accordion-button {
+    overflow-wrap: break-word;
+  }
+
+  .hero-trust li {
+    flex: 1 1 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    --bs-gutter-x: 0;
+  }
+
+  .row > [class*="col-"] {
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Palavras longas sem espaco (e-mail, CNPJ, dominio) tem min-width
+     intrinsico grande e estouravam a coluna do rodape em 360px. */
+  footer li,
+  footer a,
+  footer p,
+  .contact-info li,
+  .contact-info a {
+    overflow-wrap: anywhere;
+  }
+
+  /* Mapa com altura fixa no empilhado */
+  .map-frame {
+    height: 340px;
+    min-height: 340px;
+  }
+
+  /* Galeria 1 coluna com propor��o fixa */
+  .gallery-grid { grid-template-columns: 1fr; }
+  .g-item {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Acorde�o alinhado � esquerda no mobile */
+  .accordion-button { text-align: left; }
+
+  /* Evita toque dos flutuantes na borda em telas estreitas */
+  .wa-float {
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+  .back-top {
+    right: calc(22px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom) + clamp(52px, 15vw, 64px) + 12px);
+  }
+}
+
+/* Telas bem estreitas (<=400px, ex.: 360px): reduz escala de tipo
+   e respiro para o conteudo nao apertar. */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: clamp(2.1rem, 9.5vw, 2.6rem);
+    line-height: 1.05;
+  }
+
+  .section-title {
+    font-size: clamp(1.65rem, 7vw, 2rem);
+  }
+
+  .section {
+    padding: 3.25rem 0;
+  }
+
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .section-eyebrow {
+    letter-spacing: .1em;
+  }
+
+  .hero-trust {
+    font-size: .92rem;
+    gap: .6rem 1rem;
+  }
+
+  .hero-card {
+    padding: .8rem .9rem;
+  }
+
+  .hero-trust li {
+    flex: 1 1 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .hero-title {
+    overflow-wrap: break-word;
+  }
+
+  /* Mesma causa raiz do bloco <=575.98px: margem negativa do .row.
+     Reforcado aqui porque 320px e a faixa mais critica. */
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    --bs-gutter-x: 0;
+  }
+
+  .row > [class*="col-"] {
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 /* ---------- 23. Movimento reduzido ---------- */
